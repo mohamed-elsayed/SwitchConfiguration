@@ -20,7 +20,7 @@
             - description {{ Interface_VLAN_DESC }}
             - no shutdown 
       
-      - name: configure port range 39-46 to be access vlan 10
+      - name: configure port range to be access vlan {{ VLAN_ID }}
         ios_config:
           lines:
             - switchport mode access 
