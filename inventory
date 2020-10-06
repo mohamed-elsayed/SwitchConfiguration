@@ -1,0 +1,9 @@
+[switches]
+SW09-Lab
+SW11-Lab
+
+[BSG-SW]
+SW11-Lab
+
+[HPC-SW]
+SW09-Lab

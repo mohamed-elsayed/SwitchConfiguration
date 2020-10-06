@@ -1,0 +1,40 @@
+---   
+  - hosts: BSG-SW
+    connection: local
+    gather_facts: False
+    
+    tasks:
+      - name: configure using ios_config create vlan 10 
+        ios_config:
+          lines:
+            - vlan 10
+            - name iDRAC_BSG
+            - exit 
+
+      - name: create interface vlan to be 10.200.10.254
+        ios_config:
+          lines:
+            - interface vlan 10 
+            - ip address 10.200.10.254 255.255.255.0
+            - description iDRAC_BSG_MGMT
+            - no shutdown 
+      
+      - name: configure port range 39-46 to be access vlan 10
+        ios_config:
+          lines:
+            - switchport mode access 
+            - switchport access vlan 10
+          parents: "{{ item }}"
+        with_items:
+            - interface gigabitEthernet 1/0/39
+            - interface gigabitEthernet 1/0/40
+            - interface gigabitEthernet 1/0/41
+            - interface gigabitEthernet 1/0/42
+            - interface gigabitEthernet 1/0/43
+            - interface gigabitEthernet 1/0/44
+            - interface gigabitEthernet 1/0/45
+            - interface gigabitEthernet 1/0/46
+      
+      - name: save running to startup when modified
+        ios_config:
+          save_when: modified
