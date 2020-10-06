@@ -1,8 +1,9 @@
-vlan_id: 10
-vlan_name: iDRAC_BSG
+VLAN_ID: 10
+VLAN_NAME: iDRAC_BSG
 
 Interface_VLAN_IP: 10.200.10.254
 Interface_VLAN_Mask: 255.255.255.0
+Interface_VLAN_DESC: iDRAC_BSG_MGMT
 
 Interfaces:
     - InterfaceName: interface gigabitEthernet 1/0/39
