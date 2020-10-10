@@ -13,7 +13,14 @@ Run Ansible playbook:
 ```ansible
 ansible-playbook BSG.yaml
 ```
-
+Run Ansible playbook to configure access ports only:
+```ansible
+ansible-playbook BSG.yaml --tags ACCESS
+```
+Run Ansible playbook to configure trunk ports only:
+```ansible
+ansible-playbook BSG.yaml --tags TRUNK
+```
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
