@@ -1,16 +1,103 @@
-VLAN_ID: 10
-VLAN_NAME: iDRAC_BSG
+VLANS:
+    - VLAN_ID: 20
+      VLAN_NAME: MGMT_BSG
 
-Interface_VLAN_IP: 10.200.10.254
-Interface_VLAN_Mask: 255.255.255.0
-Interface_VLAN_DESC: iDRAC_BSG_MGMT
+    - VLAN_ID: 10
+      VLAN_NAME: iDRAC_BSG_MGMT
 
-Interfaces:
+InterfaceVLANS:
+    - VLAN_ID: 20
+      Interface_VLAN_IP: 10.200.20.1
+      Interface_VLAN_Mask: 255.255.255.0
+      Interface_VLAN_DESC: ACCESS_BSG
+
+    - VLAN_ID: 10
+      Interface_VLAN_IP: 10.200.10.1
+      Interface_VLAN_Mask: 255.255.255.0
+      Interface_VLAN_DESC: iDRAC_BSG
+
+InterfacesTrunk:
+    - InterfaceName: null
+      NativeVLANID: null
+
+InterfacesAccess:
+    - InterfaceName: interface gigabitEthernet 1/0/1
+      VLAN_ID: 20
+    - InterfaceName: interface gigabitEthernet 1/0/2
+      VLAN_ID: 20
+    - InterfaceName: interface gigabitEthernet 1/0/3
+      VLAN_ID: 20
+    - InterfaceName: interface gigabitEthernet 1/0/4
+      VLAN_ID: 20
+    - InterfaceName: interface gigabitEthernet 1/0/5
+      VLAN_ID: 20
+    - InterfaceName: interface gigabitEthernet 1/0/6
+      VLAN_ID: 20
+    - InterfaceName: interface gigabitEthernet 1/0/7
+      VLAN_ID: 20
+    - InterfaceName: interface gigabitEthernet 1/0/8
+      VLAN_ID: 20
+    - InterfaceName: interface gigabitEthernet 1/0/9
+      VLAN_ID: 20
+    - InterfaceName: interface gigabitEthernet 1/0/10
+      VLAN_ID: 20
+    - InterfaceName: interface gigabitEthernet 1/0/11
+      VLAN_ID: 20
+    - InterfaceName: interface gigabitEthernet 1/0/12
+      VLAN_ID: 20
+    - InterfaceName: interface gigabitEthernet 1/0/13
+      VLAN_ID: 20
+    - InterfaceName: interface gigabitEthernet 1/0/14
+      VLAN_ID: 20
+    - InterfaceName: interface gigabitEthernet 1/0/15
+      VLAN_ID: 20
+    - InterfaceName: interface gigabitEthernet 1/0/16
+      VLAN_ID: 20
+    - InterfaceName: interface gigabitEthernet 1/0/17
+      VLAN_ID: 20
+    - InterfaceName: interface gigabitEthernet 1/0/18
+      VLAN_ID: 20
+    - InterfaceName: interface gigabitEthernet 1/0/19
+      VLAN_ID: 20
+    - InterfaceName: interface gigabitEthernet 1/0/20
+      VLAN_ID: 20
+    - InterfaceName: interface gigabitEthernet 1/0/22
+      VLAN_ID: 20
+    - InterfaceName: interface gigabitEthernet 1/0/23
+      VLAN_ID: 20
+    - InterfaceName: interface gigabitEthernet 1/0/24
+      VLAN_ID: 20
+    - InterfaceName: interface gigabitEthernet 1/0/25
+      VLAN_ID: 20
+    - InterfaceName: interface gigabitEthernet 1/0/26
+      VLAN_ID: 20
+    - InterfaceName: interface gigabitEthernet 1/0/27
+      VLAN_ID: 20
+    - InterfaceName: interface gigabitEthernet 1/0/28
+      VLAN_ID: 20
+    - InterfaceName: interface gigabitEthernet 1/0/29
+      VLAN_ID: 20
+    - InterfaceName: interface gigabitEthernet 1/0/30
+      VLAN_ID: 20
+    - InterfaceName: interface gigabitEthernet 1/0/31
+      VLAN_ID: 20
+    - InterfaceName: interface gigabitEthernet 1/0/32
+      VLAN_ID: 20
+    - InterfaceName: interface gigabitEthernet 1/0/37
+      VLAN_ID: 20
     - InterfaceName: interface gigabitEthernet 1/0/39
+      VLAN_ID: 10
     - InterfaceName: interface gigabitEthernet 1/0/40
+      VLAN_ID: 10
     - InterfaceName: interface gigabitEthernet 1/0/41
+      VLAN_ID: 10
     - InterfaceName: interface gigabitEthernet 1/0/42
+      VLAN_ID: 10
     - InterfaceName: interface gigabitEthernet 1/0/43
+      VLAN_ID: 10
     - InterfaceName: interface gigabitEthernet 1/0/44
+      VLAN_ID: 10
     - InterfaceName: interface gigabitEthernet 1/0/45
+      VLAN_ID: 10
     - InterfaceName: interface gigabitEthernet 1/0/46
+      VLAN_ID: 10

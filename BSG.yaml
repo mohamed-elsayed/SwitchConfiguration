@@ -5,28 +5,45 @@
     vars_files:
       - vars/configurationFile
     tasks:
-      - name: configure using ios_config create vlan {{ VLAN_ID }}
+      - name: configure using ios_config create vlans
         ios_config:
           lines:
-            - vlan {{ VLAN_ID }}
-            - name {{ VLAN_NAME }}
+            - vlan {{ item.VLAN_ID }}
+            - name {{ item.VLAN_NAME }}
             - exit 
+        with_items: "{{ VLANS }}"
+        tags: ["VLANS","InterfaceVLANS","ACCESS","TRUNK"]
 
-      - name: create interface vlan to be {{ Interface_VLAN_IP }}
+      - name: create interfaces vlan
         ios_config:
           lines:
-            - interface vlan {{ VLAN_ID }} 
-            - ip address {{ Interface_VLAN_IP }} {{ Interface_VLAN_Mask }}
-            - description {{ Interface_VLAN_DESC }}
+            - interface vlan {{ item.VLAN_ID }} 
+            - ip address {{ item.Interface_VLAN_IP }} {{ item.Interface_VLAN_Mask }}
+            - description {{ item.Interface_VLAN_DESC }}
             - no shutdown 
-      
-      - name: configure port range to be access vlan {{ VLAN_ID }}
+        with_items: "{{ InterfaceVLANS }}"
+        tags: ["InterfaceVLANS","ACCESS","TRUNK"]
+
+      - name: configure port range to be access vlan
         ios_config:
           lines:
             - switchport mode access 
-            - switchport access vlan {{ VLAN_ID }}
+            - switchport access vlan {{ item.VLAN_ID }}
           parents: "{{ item.InterfaceName }}"
-        with_items: "{{ Interfaces }}"
+        with_items: "{{ InterfacesAccess }}"
+        when: item.InterfaceName != "null"
+        tags: ["ACCESS"] 
+
+      - name: configure port to be trunk with native VLAN
+        ios_config:
+          lines:
+            - switchport trunk encapsulation dot1q
+            - switchport mode trunk 
+            - switchport trunk native vlan {{ item.NativeVLANID }}
+          parents: "{{ item.InterfaceName }}"
+        with_items: "{{ InterfacesTrunk }}"
+        when: item.InterfaceName != "null"
+        tags: ["TRUNK"]
 
       - name: save running to startup when modified
         ios_config:
